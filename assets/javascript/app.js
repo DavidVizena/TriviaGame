@@ -60,8 +60,9 @@ $(document).ready(function () {
         opt3.textContent = q.option3;
         opt4.textContent = q.option4;
     };
+
     // Tests an answer to a question against the saved correct answer value and awards points accordingly
-    function rightWrong() {
+    $("input").on("click",function() {
         var answer = inputs.value;
         if (questions[currentQuestion].answer == answer) {
             correct++;
@@ -71,18 +72,19 @@ $(document).ready(function () {
         }
         if (time == 0) {
             unanswered++;
+            currentQuestion++;
         }
         currentQuestion++;
         if (currentQuestion == totQuestions) {
-            container.style.display = 'none';
-            resultWrapper.style.display = '';
+            $(".container").hide();
+            $(".resultWrapper").show();
             resultCorrect.textContent = "Correct: " + correct;
             resultIncorrect.textContent = "Incorrect: " + incorrect;
             resultUnanswered.textContent = "Correct: " + unanswered;
             return;
         }
         getQuestion(currentQuestion);
-    }
+    });
     getQuestion(currentQuestion);
     // Document Ready Closing Function
 });
