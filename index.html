@@ -12,6 +12,8 @@
         crossorigin="anonymous">
     <!-- PERSONAL STYLE SHEET -->
     <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- BOOTSTRAP/JQUERY SCRIPT LINKS -->
+    <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <!-- PERSONAL JAVASCRIPT SHEET -->
     <script src="./assets/javascript/app.js"></script>
     <title>Zelda - Trivia</title>
@@ -38,19 +40,16 @@
             <input type="button" name="option" value="4" />
             <span id="opt4"></span>
         </label>
-        <div id="result" class="container result"></div>
+        <div class="resultWrapper">
+            <div id="correct" class="container correct"></div>
+            <div id="incorrect" class="container incorrect"></div>
+            <div id="unanswered" class="container unanswered"></div>
+        </div>
 
     </div>
 
 
 
-    <!-- BOOTSTRAP/JQUERY SCRIPT LINKS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
