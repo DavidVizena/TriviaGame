@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
     // Global Variables
+    // 
+    // Question
     var questions = [{
         "question": "In Majora's Mask, what are the 4 forms Link can change into via masks?",
         "option1": "Horse, Gorgon, Epona, and God",
@@ -17,18 +19,31 @@ $(document).ready(function () {
         "answer": "4"
     }, {
         "question": "In Twilight Princess, what is Midna weak against?",
+        "option3": "Light",
         "option1": "Water",
         "option2": "Fire",
-        "option3": "Light",
         "option4": "Darkness",
-        "answer": "3"
-    },{
+        "answer": "1"
+    }, {
         "question": "In Wind Waker where did Link find Tingle?",
         "option1": "Ice Ring Isle",
         "option2": "Forest Haven",
         "option3": "Windfall Island",
         "option4": "Great Fish Isle",
         "answer": "3"
-    }]
-// Document Ready Closing Function
+    }];
+
+    var currentQuestion = 0;
+    var score = 0;
+    var totQuestions = questions.length;
+    
+    var container = $("#quizContainer");
+    var zeldaQuestion = $("#question");
+    var opt1 = $("#opt1");
+    var opt2 = $("#opt2");
+    var opt3 = $("#opt3");
+    var opt4 = $("#opt4");
+    
+
+    // Document Ready Closing Function
 });
