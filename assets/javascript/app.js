@@ -19,11 +19,11 @@ $(document).ready(function () {
         "answer": "4"
     }, {
         "question": "In Twilight Princess, what is Midna weak against?",
-        "option3": "Light",
         "option1": "Water",
         "option2": "Fire",
+        "option3": "Light",
         "option4": "Darkness",
-        "answer": "1"
+        "answer": "3"
     }, {
         "question": "In Wind Waker where did Link find Tingle?",
         "option1": "Ice Ring Isle",
@@ -47,7 +47,6 @@ $(document).ready(function () {
     var opt2 = document.getElementById('opt2');
     var opt3 = document.getElementById('opt3');
     var opt4 = document.getElementById('opt4');
-    var inputs = document.getElementsByTagName('input');
     var resultCorrect = document.getElementById('correct');
     var resultIncorrect = document.getElementById('incorrect');
     var resultUnanswered = document.getElementById('unanswered');
@@ -62,8 +61,10 @@ $(document).ready(function () {
     };
 
     // Tests an answer to a question against the saved correct answer value and awards points accordingly
-    $("input").on("click",function() {
-        var answer = inputs.value;
+
+    $(document).on('click', 'input', function () {
+        var answer = $(this).val();
+        console.log(answer);
         if (questions[currentQuestion].answer == answer) {
             correct++;
         }
@@ -78,9 +79,12 @@ $(document).ready(function () {
         if (currentQuestion == totQuestions) {
             $(".container").hide();
             $(".resultWrapper").show();
+            $("#correct").show();
+            $("#incorrect").show();
+            $("#unanswered").show();
             resultCorrect.textContent = "Correct: " + correct;
             resultIncorrect.textContent = "Incorrect: " + incorrect;
-            resultUnanswered.textContent = "Correct: " + unanswered;
+            resultUnanswered.textContent = "Unanswered: " + unanswered;
             return;
         }
         getQuestion(currentQuestion);
