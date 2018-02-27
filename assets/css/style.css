@@ -1,8 +1,12 @@
 body{
-    background-image: url("../images/blueBG.jpg");
+    background-image: url("../images/startBG.jpeg");
     background-size: cover;
     background-position: absolute;
 };
 .container result{
     display: none;
 };
+@font-face {
+    font-family: "Triforce";
+    src: url("../fonts/Triforce.ttf"); 
+} 
