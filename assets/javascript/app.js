@@ -38,53 +38,87 @@ $(document).ready(function () {
     var incorrect = 0;
     var unanswered = 0;
     var time = 30;
+    var timerSec = setInterval(countdown, 1000);
     var totQuestions = questions.length;
 
-    var container = document.getElementById('quizContainer');
-    var resultWrapper = document.getElementsByClassName('resultWrapper');
-    var zeldaQuestion = document.getElementById('question');
-    var opt1 = document.getElementById('opt1');
-    var opt2 = document.getElementById('opt2');
-    var opt3 = document.getElementById('opt3');
-    var opt4 = document.getElementById('opt4');
-    var resultCorrect = document.getElementById('correct');
-    var resultIncorrect = document.getElementById('incorrect');
-    var resultUnanswered = document.getElementById('unanswered');
+    var container = $("#quizContainer");
+    var resultWrapper = $("#resultWrapper");
+    var zeldaQuestion = $("#question");
+    var opt1 = $("#opt1");
+    var opt2 = $("#opt2");
+    var opt3 = $("#opt3");
+    var opt4 = $("#opt4");
+    var timer = $("#timer");
+    var resultCorrect = $("#correct");
+    var resultIncorrect = $("#incorrect");
+    var resultUnanswered = $("#unanswered");
     // Gets a question by injecting the current question into the HTML
+
     function getQuestion(questionIndex) {
         var q = questions[questionIndex];
-        zeldaQuestion.textContent = (questionIndex + 1) + ". " + q.question;
-        opt1.textContent = q.option1;
-        opt2.textContent = q.option2;
-        opt3.textContent = q.option3;
-        opt4.textContent = q.option4;
+        zeldaQuestion.text((questionIndex + 1) + ". " + q.question);
+        opt1.text(q.option1);
+        opt2.text(q.option2);
+        opt3.text(q.option3);
+        opt4.text(q.option4);
+    };
+    function timeReset() {
+        time = 30;
+        countdown();
+    };
+    function timeStop(){
+        clearTimeout(timerSec)
     };
 
-    // Tests an answer to a question against the saved correct answer value and awards points accordingly
-
-    $(document).on('click', 'input', function () {
-        var answer = $(this).val();
-        console.log(answer);
-        if (questions[currentQuestion].answer == answer) {
-            correct++;
-        }
-        if (questions[currentQuestion].answer !== answer) {
-            incorrect++;
-        }
+    // Timer  
+    function countdown() {
         if (time == 0) {
+            timer.text(time + " seconds remaining");
             unanswered++;
             currentQuestion++;
+            getQuestion(currentQuestion);
+            timeReset();
         }
-        currentQuestion++;
         if (currentQuestion == totQuestions) {
             $(".container").hide();
             $(".resultWrapper").show();
             $("#correct").show();
             $("#incorrect").show();
             $("#unanswered").show();
-            resultCorrect.textContent = "Correct: " + correct;
-            resultIncorrect.textContent = "Incorrect: " + incorrect;
-            resultUnanswered.textContent = "Unanswered: " + unanswered;
+            resultCorrect.text("Correct: " + correct);
+            resultIncorrect.text("Incorrect: " + incorrect);
+            resultUnanswered.text("Unanswered: " + unanswered);
+            return;
+        }
+        else {
+            timer.text(time + " seconds remaining");
+            time--;
+        }
+    }
+    countdown();
+
+    // Tests an answer to a question against the saved correct answer value and awards points accordingly
+    $(document).on('click', 'input', function () {
+        var answer = $(this).val();
+        if (questions[currentQuestion].answer == answer) {
+            correct++;
+            timeReset();
+        }
+        if (questions[currentQuestion].answer !== answer) {
+            incorrect++;
+            timeReset();
+        }
+        currentQuestion++;
+        if (currentQuestion == totQuestions) {
+            timeStop();
+            $(".container").hide();
+            $(".resultWrapper").show();
+            $("#correct").show();
+            $("#incorrect").show();
+            $("#unanswered").show();
+            resultCorrect.text("Correct: " + correct);
+            resultIncorrect.text("Incorrect: " + incorrect);
+            resultUnanswered.text("Unanswered: " + unanswered);
             return;
         }
         getQuestion(currentQuestion);
