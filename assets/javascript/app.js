@@ -91,7 +91,7 @@ $(document).ready(function () {
             return;
         }
         else {
-            timer.text(time + " seconds remaining");
+            timer.text(time);
             time--;
         }
     }

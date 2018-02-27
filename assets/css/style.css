@@ -1,17 +1,19 @@
+@font-face {
+    font-family: "Triforce";
+    src: url("../fonts/Triforce.ttf"); 
+}
 html{
     height:100%;
-};
+}
 body{
-    background-image: url("../images/startBG.jpeg");
+    background-image: url("../images/twilightPrincessBG.jpg");
     background-size: cover;
     background-position: absolute;
     min-height:100%;
     background-repeat:no-repeat;
-};
+    color: #f2e918;
+    font-family: "Triforce.ttf"
+}
 .container result{
     display: none;
-};
-@font-face {
-    font-family: "Triforce";
-    src: url("../fonts/Triforce.ttf"); 
-};
+}
