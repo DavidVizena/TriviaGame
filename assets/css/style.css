@@ -6,14 +6,73 @@ html{
     height:100%;
 }
 body{
-    background-image: url("../images/twilightPrincessBG.jpg");
+    background-image: url("../images/blueBG.jpg");
     background-size: cover;
     background-position: absolute;
     min-height:100%;
     background-repeat:no-repeat;
     color: #f2e918;
-    font-family: "Triforce.ttf"
+    font-family: "Triforce"
 }
 .container result{
     display: none;
 }
+h1{
+    position: absolute;
+    top: 30%;
+    left: 39%;
+    font-size: 80px;
+    opacity: .50;
+}
+h2{
+    position: absolute;
+    top: 62%;
+    left: 34%;
+    font-size: 50px;
+    opacity: .50;
+}
+img#navi{
+    background-color: rgb(300,300,300);
+    background: transparent;
+    position: absolute;
+    top: 40%;
+    left: 45%;
+}
+
+div.title{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 100px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 3%;
+    left: 26%;
+    z-index: 2;
+    opacity: .75;
+}
+p#timer{
+    padding: 20px;
+    font-size: 25px;
+    background: #000000;
+    opacity: .75;
+    width: 500px;
+    font-size: 250px;
+    width: 335px;
+    height: 385px;
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    right: 10%;
+}
+/* #navi {
+    width:350px;
+    display:block;
+    margin:0 auto;
+    -webkit-transition: -webkit-transform 5s ease-in-out;
+    position:absolute;
+    z-index: 30;
+    
+}
+.anim {
+    -webkit-transform:translate(450px,0px);
+} */

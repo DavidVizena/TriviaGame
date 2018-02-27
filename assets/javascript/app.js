@@ -54,6 +54,32 @@ $(document).ready(function () {
     var resultUnanswered = $("#unanswered");
     // Gets a question by injecting the current question into the HTML
 
+    function init() {
+        $("#naviContainer").show();
+        $(".container").hide();
+        // antiGrav();
+        // $("#navi").fadeIn(500).addClass("anim");
+    };
+    init();
+
+    $("img#navi").on("click", function () {
+        $("#naviContainer").hide();
+        $(".container").show();
+        timeReset();
+        countdown();
+    });
+
+    // AntiGrav function
+    // function antiGrav(ele, distance) {
+    //     $(ele).animate({
+    //         'top': "+=" + distance + "px"
+    //     }, 1500, "swing", function () {
+    //         $(ele).animate({
+    //             'top': "-=" + distance + "px"
+    //         }, 1200, "swing", function () {
+    //             antiGrav(ele, distance);
+    //         });
+
     function getQuestion(questionIndex) {
         var q = questions[questionIndex];
         zeldaQuestion.text((questionIndex + 1) + ". " + q.question);
@@ -62,18 +88,17 @@ $(document).ready(function () {
         opt3.text(q.option3);
         opt4.text(q.option4);
     };
+    // Timer  
     function timeReset() {
         time = 30;
         countdown();
     };
-    function timeStop(){
+    function timeStop() {
         clearTimeout(timerSec)
     };
-
-    // Timer  
     function countdown() {
         if (time == 0) {
-            timer.text(time + " seconds remaining");
+            timer.text(time);
             unanswered++;
             currentQuestion++;
             getQuestion(currentQuestion);
@@ -90,12 +115,20 @@ $(document).ready(function () {
             resultUnanswered.text("Unanswered: " + unanswered);
             return;
         }
+        if (time == 0 && currentQuestion == totQuestions) {
+            timeStop();
+            $("#quizContainer").hide();
+            $("#correct").show();
+            $("#incorrect").show();
+            $("#unanswered").show();
+        }
         else {
             timer.text(time);
             time--;
         }
-    }
+    };
     countdown();
+    // END Timer
 
     // Tests an answer to a question against the saved correct answer value and awards points accordingly
     $(document).on('click', 'input', function () {
@@ -112,7 +145,6 @@ $(document).ready(function () {
         if (currentQuestion == totQuestions) {
             timeStop();
             $(".container").hide();
-            $(".resultWrapper").show();
             $("#correct").show();
             $("#incorrect").show();
             $("#unanswered").show();
