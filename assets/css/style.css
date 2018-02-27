@@ -1,5 +1,7 @@
 body{
-
+    background-image: url("../images/blueBG.jpg");
+    background-size: cover;
+    background-position: absolute;
 };
 .container result{
     display: none;
