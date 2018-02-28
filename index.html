@@ -23,13 +23,13 @@
     <!-- Navi Load Page -->
     <div id="naviContainer">
         <h1>Click Navi</h1>
-        <img id="navi"src="./assets/images/naviHover.png" alt="Navi">
+        <img id="navi" src="./assets/images/naviHover.png" alt="Navi">
         <h2>To begin the Zelda Trivia</h2>
     </div>
 
     <!-- Main Trivia -->
-    <div id= "quizContainer" class="container">
-        <div class="title">Zelda Trivia</div>
+    <div class="title">Zelda Trivia</div>
+    <div id="quizContainer" class="container">
         <div id="question" class="question"></div>
         <label class="option">
             <input type="button" name="option" value="1" />
@@ -47,10 +47,11 @@
             <input type="button" name="option" value="4" />
             <span id="opt4"></span>
         </label>
-        <div class="timerWrapper">
-            <p id="timer"></p>
-        </div>
     </div>
+    <div class="timerWrapper">
+        <p id="timer"></p>
+    </div>
+    <!-- Results -->
     <div class="resultWrapper">
         <div id="correct" class="container correct"></div>
         <div id="incorrect" class="container incorrect"></div>
