@@ -1,7 +1,10 @@
+/* fonts */
 @font-face {
     font-family: "Triforce";
     src: url("../fonts/Triforce.ttf"); 
 }
+/*  */
+/* Global */
 html{
     height:100%;
 }
@@ -17,6 +20,7 @@ body{
 .container result{
     display: none;
 }
+/*  */
 /* LoadPage */
 h1{
     position: absolute;
@@ -32,6 +36,7 @@ h2{
     font-size: 50px;
     opacity: .50;
 }
+/* Anims */
 @keyframes float {
 	0% {
 		transform: translatey(0px);
@@ -54,7 +59,9 @@ img#navi{
 	animation: float 6s ease-in-out infinite;
 	img { width: 100%; height: auto; }
 }
+/*  */
 /* END Load Page */
+/*  */
 /* MainPage */
 div.title{
     padding-top: 20px;
@@ -98,3 +105,30 @@ p#timer{
     top: 30%;
     right: 10%;
 }
+div.resultWrapper{
+    opacity: .75;
+    font-size: 100px;
+    position: absolute;
+    top: 28%;
+    left: 35%;
+}
+img#correctGif{
+position: absolute;
+top: 40%;
+left: 35%;
+z-index: 3;
+}
+img#incorrectGif{
+    position: absolute;
+    top: 38%;
+    left: 38%;
+    z-index: 3;
+}
+img#unansweredGif{
+    position: absolute;
+    top: 42%;
+    left: 45%;
+    z-index: 3;
+}
+/* 
+ /* */ 

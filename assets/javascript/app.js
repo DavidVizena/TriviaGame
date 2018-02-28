@@ -37,7 +37,7 @@ $(document).ready(function () {
     var correct = 0;
     var incorrect = 0;
     var unanswered = 0;
-    var time = 5;
+    var time = 30;
     var timerSec = setInterval(countdown, 1000);
     var totQuestions = questions.length;
     // 
@@ -52,11 +52,14 @@ $(document).ready(function () {
     var resultCorrect = $("#correct");
     var resultIncorrect = $("#incorrect");
     var resultUnanswered = $("#unanswered");
+    // 
+    // Scene switching
 
+    // 
     // INITILIZATION
     function init() {
         currentQuestion = 0;
-        time = 5;
+        time = 30;
         // timeStop();
         $("#naviContainer").show();
         $(".container").hide();
@@ -66,11 +69,14 @@ $(document).ready(function () {
         $("#correct").hide();
         $("#incorrect").hide();
         $("#unanswered").hide();
+        $("#correctGif").hide();
+        $("#incorrectGif").hide();
+        $("#unansweredGif").hide();
     };
     init();
 
     $("img#navi").on("click", function () {
-        time = 5;
+        time = 30;
         $("#naviContainer").hide();
         $(".container").show();
         $("div.title").show();
@@ -80,7 +86,7 @@ $(document).ready(function () {
     // 
     // Timer  
     function timeReset() {
-        time = 5;
+        time = 30;
         countdown();
     };
     function timeStop() {
@@ -90,11 +96,10 @@ $(document).ready(function () {
         if (time == 0) {
             timer.text(time);
             unanswered++;
+            $('img#unansweredGif').fadeIn().delay(2000).fadeOut('slow'); 
             currentQuestion++;
             timeReset();
         }
-        console.log(currentQuestion);
-        console.log(totQuestions);
         if (currentQuestion == totQuestions) {
             timeStop();
             $(".container").hide();
@@ -132,10 +137,12 @@ $(document).ready(function () {
         var answer = $(this).val();
         if (questions[currentQuestion].answer == answer) {
             correct++;
+            $('img#correctGif').fadeIn().delay(2000).fadeOut('slow'); 
             timeReset();
         }
         if (questions[currentQuestion].answer !== answer) {
             incorrect++;
+            $('img#incorrectGif').fadeIn().delay(2000).fadeOut('slow'); 
             timeReset();
         }
         currentQuestion++;
