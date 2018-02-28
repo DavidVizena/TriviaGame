@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    // 
     // Global Variables
     // 
     // Questions
@@ -32,7 +32,7 @@ $(document).ready(function () {
         "option4": "Great Fish Isle",
         "answer": "3"
     }];
-
+    // 
     var currentQuestion = 0;
     var correct = 0;
     var incorrect = 0;
@@ -40,7 +40,7 @@ $(document).ready(function () {
     var time = 5;
     var timerSec = setInterval(countdown, 1000);
     var totQuestions = questions.length;
-
+    // 
     var container = $("#quizContainer");
     var resultWrapper = $("#resultWrapper");
     var zeldaQuestion = $("#question");
@@ -52,10 +52,12 @@ $(document).ready(function () {
     var resultCorrect = $("#correct");
     var resultIncorrect = $("#incorrect");
     var resultUnanswered = $("#unanswered");
-    // Gets a question by injecting the current question into the HTML
 
+    // INITILIZATION
     function init() {
         currentQuestion = 0;
+        time = 5;
+        // timeStop();
         $("#naviContainer").show();
         $(".container").hide();
         $("div.title").hide();
@@ -68,23 +70,14 @@ $(document).ready(function () {
     init();
 
     $("img#navi").on("click", function () {
+        time = 5;
         $("#naviContainer").hide();
         $(".container").show();
         $("div.title").show();
         $("p#timer").show();
-        timeReset();
         countdown();
     });
-
-    function getQuestion(questionIndex) {
-        var q = questions[questionIndex];
-        zeldaQuestion.text((questionIndex + 1) + ". " + q.question);
-        console.log(questions);
-        opt1.text(q.option1);
-        opt2.text(q.option2);
-        opt3.text(q.option3);
-        opt4.text(q.option4);
-    };
+    // 
     // Timer  
     function timeReset() {
         time = 5;
@@ -100,7 +93,8 @@ $(document).ready(function () {
             currentQuestion++;
             timeReset();
         }
-        if (time == 0 && currentQuestion == totQuestions) {
+        else if (time == 0 && currentQuestion == totQuestions) {
+            console.log(totQuestions);
             timeStop();
             $("#quizContainer").hide();
             $("div.title").hide();
@@ -117,7 +111,17 @@ $(document).ready(function () {
     };
     countdown();
     // END Timer
-
+    // 
+    // Gets a question and populates the HTML
+    function getQuestion(questionIndex) {
+        var q = questions[questionIndex];
+        zeldaQuestion.text((questionIndex + 1) + ". " + q.question);
+        opt1.text(q.option1);
+        opt2.text(q.option2);
+        opt3.text(q.option3);
+        opt4.text(q.option4);
+    };
+    // 
     // Tests an answer to a question against the saved correct answer value and awards points accordingly
     $(document).on('click', 'input', function () {
         var answer = $(this).val();
