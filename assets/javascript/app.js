@@ -37,7 +37,7 @@ $(document).ready(function () {
     var correct = 0;
     var incorrect = 0;
     var unanswered = 0;
-    var time = 30;
+    var time = 5;
     var timerSec = setInterval(countdown, 1000);
     var totQuestions = questions.length;
 
@@ -55,34 +55,31 @@ $(document).ready(function () {
     // Gets a question by injecting the current question into the HTML
 
     function init() {
+        currentQuestion = 0;
         $("#naviContainer").show();
         $(".container").hide();
-        // antiGrav();
-        // $("#navi").fadeIn(500).addClass("anim");
+        $("div.title").hide();
+        $("p#timer").hide();
+        $(".resultWrapper").show();
+        $("#correct").hide();
+        $("#incorrect").hide();
+        $("#unanswered").hide();
     };
     init();
 
     $("img#navi").on("click", function () {
         $("#naviContainer").hide();
         $(".container").show();
+        $("div.title").show();
+        $("p#timer").show();
         timeReset();
         countdown();
     });
 
-    // AntiGrav function
-    // function antiGrav(ele, distance) {
-    //     $(ele).animate({
-    //         'top': "+=" + distance + "px"
-    //     }, 1500, "swing", function () {
-    //         $(ele).animate({
-    //             'top': "-=" + distance + "px"
-    //         }, 1200, "swing", function () {
-    //             antiGrav(ele, distance);
-    //         });
-
     function getQuestion(questionIndex) {
         var q = questions[questionIndex];
         zeldaQuestion.text((questionIndex + 1) + ". " + q.question);
+        console.log(questions);
         opt1.text(q.option1);
         opt2.text(q.option2);
         opt3.text(q.option3);
@@ -90,7 +87,7 @@ $(document).ready(function () {
     };
     // Timer  
     function timeReset() {
-        time = 30;
+        time = 5;
         countdown();
     };
     function timeStop() {
@@ -101,23 +98,13 @@ $(document).ready(function () {
             timer.text(time);
             unanswered++;
             currentQuestion++;
-            getQuestion(currentQuestion);
             timeReset();
-        }
-        if (currentQuestion == totQuestions) {
-            $(".container").hide();
-            $(".resultWrapper").show();
-            $("#correct").show();
-            $("#incorrect").show();
-            $("#unanswered").show();
-            resultCorrect.text("Correct: " + correct);
-            resultIncorrect.text("Incorrect: " + incorrect);
-            resultUnanswered.text("Unanswered: " + unanswered);
-            return;
         }
         if (time == 0 && currentQuestion == totQuestions) {
             timeStop();
             $("#quizContainer").hide();
+            $("div.title").hide();
+            $("p#timer").hide();
             $("#correct").show();
             $("#incorrect").show();
             $("#unanswered").show();
@@ -126,6 +113,7 @@ $(document).ready(function () {
             timer.text(time);
             time--;
         }
+        getQuestion(currentQuestion);
     };
     countdown();
     // END Timer
@@ -145,6 +133,8 @@ $(document).ready(function () {
         if (currentQuestion == totQuestions) {
             timeStop();
             $(".container").hide();
+            $("div.title").hide();
+            $("p#timer").hide();
             $("#correct").show();
             $("#incorrect").show();
             $("#unanswered").show();
