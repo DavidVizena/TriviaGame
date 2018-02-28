@@ -93,15 +93,20 @@ $(document).ready(function () {
             currentQuestion++;
             timeReset();
         }
-        else if (time == 0 && currentQuestion == totQuestions) {
-            console.log(totQuestions);
+        console.log(currentQuestion);
+        console.log(totQuestions);
+        if (currentQuestion == totQuestions) {
             timeStop();
-            $("#quizContainer").hide();
+            $(".container").hide();
             $("div.title").hide();
             $("p#timer").hide();
             $("#correct").show();
             $("#incorrect").show();
             $("#unanswered").show();
+            resultCorrect.text("Correct: " + correct);
+            resultIncorrect.text("Incorrect: " + incorrect);
+            resultUnanswered.text("Unanswered: " + unanswered);
+            return;
         }
         else {
             timer.text(time);
