@@ -49,15 +49,17 @@ $(document).ready(function () {
     var opt3 = $("#opt3");
     var opt4 = $("#opt4");
     var timer = $("#timer");
+    var bg0 = "./assets/images/blueBG.jpg"
+    var bg1 = "./assets/images/majMaskBG.jpg"
+    var bg2 = "./assets/images/ocarinaOfTimeBG.jpg"
+    var bg3 = "./assets/images/twilightPrincess.jpg"
+    var bg4 = "./assets/images/windWaker.jpg"
     var correctWord = $("#correctWord");
     var incorrectWord = $("#incorrectWord");
     var unansweredWord = $("#unansweredWord");
     var resultCorrect = $("#correct");
     var resultIncorrect = $("#incorrect");
     var resultUnanswered = $("#unanswered");
-    // 
-    // Scene switching
-
     // 
     // INITILIZATION
     function init() {
@@ -108,13 +110,11 @@ $(document).ready(function () {
             $('img#unansweredGif').fadeIn().delay(2000).fadeOut('slow');
             setTimeout(function () {
                 currentQuestion++;
-                timeReset();
-            }, 3000);
-            setTimeout(function () {
                 unansweredWord.hide();
-                $('.container').show();
+                timeReset();
                 timer.show();
-            }, 3000);
+                $('.container').show();
+            }, 2200);
         }
         if (currentQuestion == totQuestions) {
             timeStop();
@@ -183,7 +183,7 @@ $(document).ready(function () {
             currentQuestion++;
             timer.show();
         }, 3000);
-        if (currentQuestion == totQuestions) {
+        if (time == 0 && currentQuestion == totQuestions) {
             timeStop();
             $(".container").hide();
             $("div.title").hide();
@@ -200,5 +200,33 @@ $(document).ready(function () {
         getQuestion(currentQuestion);
     });
     getQuestion(currentQuestion);
+    // Scene switching
+    if (currentQuestion == 0)
+        $('body').fadeTo('slow', 0.3, function () {
+            $(this).css('background-image', 'url(' + bg0 + ')');
+        }).delay(1000).fadeTo('slow', 1);
+    
+        if (currentQuestion == 1)
+        $('body').fadeTo('slow', 0.3, function () {
+            $(this).css('background-image', 'url(' + bg1 + ')');
+        }).delay(1000).fadeTo('slow', 1);
+
+    if (currentQuestion == 2)
+        $('body').fadeTo('slow', 0.3, function () {
+            $(this).css('background-image', 'url(' + bg2 + ')');
+        }).delay(1000).fadeTo('slow', 1);
+
+    if (currentQuestion == 3)
+        $('body').fadeTo('slow', 0.3, function () {
+            $(this).css('background-image', 'url(' + bg3 + ')');
+        }).delay(1000).fadeTo('slow', 1);
+
+    if (currentQuestion == 4)
+        $('body').fadeTo('slow', 0.3, function () {
+            $(this).css('background-image', 'url(' + bg4 + ')');
+        }).delay(1000).fadeTo('slow', 1);
+
+
+    // 
     // Document Ready Closing Function
 });
