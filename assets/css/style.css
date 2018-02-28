@@ -92,6 +92,24 @@ background-color: #000000;
 label.option{
 font-size: 25px;
 }
+span#correctWord{
+font-size: 50px;
+position: absolute;
+top: 34%;
+left: 43%;
+}
+span#incorrectWord{
+    font-size: 50px;
+    position: absolute;
+    top: 32%;
+    left: 26%;
+}
+span#unansweredWord{
+    font-size: 50px;
+    position: absolute;
+    top: 30%;
+    left: 27%;
+}
 p#timer{
     padding: 20px;
     font-size: 25px;

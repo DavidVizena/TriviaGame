@@ -49,6 +49,9 @@ $(document).ready(function () {
     var opt3 = $("#opt3");
     var opt4 = $("#opt4");
     var timer = $("#timer");
+    var correctWord = $("#correctWord");
+    var incorrectWord = $("#incorrectWord");
+    var unansweredWord = $("#unansweredWord");
     var resultCorrect = $("#correct");
     var resultIncorrect = $("#incorrect");
     var resultUnanswered = $("#unanswered");
@@ -60,7 +63,9 @@ $(document).ready(function () {
     function init() {
         currentQuestion = 0;
         time = 30;
-        // timeStop();
+        correctWord.hide();
+        incorrectWord.hide();
+        unansweredWord.hide();
         $("#naviContainer").show();
         $(".container").hide();
         $("div.title").hide();
@@ -97,14 +102,17 @@ $(document).ready(function () {
             timer.text(time);
             unanswered++;
             timer.hide();
+            unansweredWord.show();
+            unansweredWord.text("You fell asleep! The correct answer was : " + questions[currentQuestion].answer);
             $('img#unansweredGif').fadeIn().delay(2000).fadeOut('slow');
             setTimeout(function () {
                 currentQuestion++;
                 timeReset();
             }, 3000);
-            setTimeout(function (){
+            setTimeout(function () {
                 timer.show();
-            },3000);
+                unansweredWord.hide();
+            }, 3000);
         }
         if (currentQuestion == totQuestions) {
             timeStop();
@@ -143,21 +151,27 @@ $(document).ready(function () {
         var answer = $(this).val();
         if (questions[currentQuestion].answer == answer) {
             correct++;
+            correctWord.show();
+            correctWord.text("Correct!!");
             $('img#correctGif').fadeIn().delay(2000).fadeOut('slow');
             setTimeout(function () {
                 timeReset();
+                correctWord.hide();
             }, 3000);
         }
         if (questions[currentQuestion].answer !== answer) {
             incorrect++;
+            incorrectWord.show();
+            incorrectWord.text("Thats wrong! The correct answer was : " + questions[currentQuestion].answer);
             $('img#incorrectGif').fadeIn().delay(2000).fadeOut('slow');
             setTimeout(function () {
                 timeReset();
+                incorrectWord.hide();
             }, 3000);
         }
-        setTimeout(function (){
+        setTimeout(function () {
             currentQuestion++;
-            }, 3000);
+        }, 3000);
         if (currentQuestion == totQuestions) {
             timeStop();
             timer.hide();
