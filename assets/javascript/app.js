@@ -96,9 +96,15 @@ $(document).ready(function () {
         if (time == 0) {
             timer.text(time);
             unanswered++;
-            $('img#unansweredGif').fadeIn().delay(2000).fadeOut('slow'); 
-            currentQuestion++;
-            timeReset();
+            timer.hide();
+            $('img#unansweredGif').fadeIn().delay(2000).fadeOut('slow');
+            setTimeout(function () {
+                currentQuestion++;
+                timeReset();
+            }, 3000);
+            setTimeout(function (){
+                timer.show();
+            },3000);
         }
         if (currentQuestion == totQuestions) {
             timeStop();
@@ -137,17 +143,24 @@ $(document).ready(function () {
         var answer = $(this).val();
         if (questions[currentQuestion].answer == answer) {
             correct++;
-            $('img#correctGif').fadeIn().delay(2000).fadeOut('slow'); 
-            timeReset();
+            $('img#correctGif').fadeIn().delay(2000).fadeOut('slow');
+            setTimeout(function () {
+                timeReset();
+            }, 3000);
         }
         if (questions[currentQuestion].answer !== answer) {
             incorrect++;
-            $('img#incorrectGif').fadeIn().delay(2000).fadeOut('slow'); 
-            timeReset();
+            $('img#incorrectGif').fadeIn().delay(2000).fadeOut('slow');
+            setTimeout(function () {
+                timeReset();
+            }, 3000);
         }
-        currentQuestion++;
+        setTimeout(function (){
+            currentQuestion++;
+            }, 3000);
         if (currentQuestion == totQuestions) {
             timeStop();
+            timer.hide();
             $(".container").hide();
             $("div.title").hide();
             $("p#timer").hide();
