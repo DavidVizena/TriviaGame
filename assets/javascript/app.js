@@ -102,6 +102,7 @@ $(document).ready(function () {
             timer.text(time);
             unanswered++;
             timer.hide();
+            $('.container').hide();
             unansweredWord.show();
             unansweredWord.text("You fell asleep! The correct answer was : " + questions[currentQuestion].answer);
             $('img#unansweredGif').fadeIn().delay(2000).fadeOut('slow');
@@ -110,8 +111,9 @@ $(document).ready(function () {
                 timeReset();
             }, 3000);
             setTimeout(function () {
-                timer.show();
                 unansweredWord.hide();
+                $('.container').show();
+                timer.show();
             }, 3000);
         }
         if (currentQuestion == totQuestions) {
@@ -152,29 +154,37 @@ $(document).ready(function () {
         if (questions[currentQuestion].answer == answer) {
             correct++;
             correctWord.show();
+            timer.hide();
+            $('.container').hide();
             correctWord.text("Correct!!");
             $('img#correctGif').fadeIn().delay(2000).fadeOut('slow');
             setTimeout(function () {
                 timeReset();
                 correctWord.hide();
+                timer.show();
+                $('.container').show();
             }, 3000);
         }
         if (questions[currentQuestion].answer !== answer) {
             incorrect++;
             incorrectWord.show();
+            $('.container').hide();
+            timer.hide();
             incorrectWord.text("Thats wrong! The correct answer was : " + questions[currentQuestion].answer);
             $('img#incorrectGif').fadeIn().delay(2000).fadeOut('slow');
             setTimeout(function () {
                 timeReset();
                 incorrectWord.hide();
+                timer.show();
+                $('.container').show();
             }, 3000);
         }
         setTimeout(function () {
             currentQuestion++;
+            timer.show();
         }, 3000);
         if (currentQuestion == totQuestions) {
             timeStop();
-            timer.hide();
             $(".container").hide();
             $("div.title").hide();
             $("p#timer").hide();
@@ -184,6 +194,7 @@ $(document).ready(function () {
             resultCorrect.text("Correct: " + correct);
             resultIncorrect.text("Incorrect: " + incorrect);
             resultUnanswered.text("Unanswered: " + unanswered);
+            timer.hide();
             return;
         }
         getQuestion(currentQuestion);
