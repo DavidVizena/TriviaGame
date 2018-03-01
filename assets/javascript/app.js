@@ -49,11 +49,11 @@ $(document).ready(function () {
     var opt3 = $("#opt3");
     var opt4 = $("#opt4");
     var timer = $("#timer");
-    var bg0 = $("img#bg0");
-    var bg1 = $("img#bg1");
-    var bg2 = $("img#bg2");
-    var bg3 = $("img#bg3");
-    var bg4 = $("img#bg4");
+    var bg0 = "./assets/images/blueBG.jpg"
+    var bg1 = "./assets/images/majMaskBG.jpg"
+    var bg2 = "./assets/images/ocarinaOfTimeBG.jpg"
+    var bg3 = "./assets/images/twilightPrincess.jpg"
+    var bg4 = "./assets/images/windWaker.jpg"
     var correctWord = $("#correctWord");
     var incorrectWord = $("#incorrectWord");
     var unansweredWord = $("#unansweredWord");
@@ -72,17 +72,13 @@ $(document).ready(function () {
         $(".container").hide();
         $("div.title").hide();
         $("p#timer").hide();
+        $(".resultWrapper").show();
         $("#correct").hide();
         $("#incorrect").hide();
         $("#unanswered").hide();
         $("#correctGif").hide();
         $("#incorrectGif").hide();
         $("#unansweredGif").hide();
-        bg0.hide();
-        bg1.hide();
-        bg2.hide();
-        bg3.hide();
-        bg4.hide();
     };
     init();
 
@@ -111,21 +107,20 @@ $(document).ready(function () {
             $('.container').hide();
             unansweredWord.show();
             unansweredWord.text("You fell asleep! The correct answer was : " + questions[currentQuestion].answer);
-            $('img#unansweredGif').fadeIn().delay(3000).fadeOut('slow');
+            $('img#unansweredGif').fadeIn().delay(2000).fadeOut('slow');
             setTimeout(function () {
-                console.log(time);
                 currentQuestion++;
                 unansweredWord.hide();
                 timeReset();
                 timer.show();
                 $('.container').show();
-            }, 5000);
+            }, 2200);
         }
         if (currentQuestion == totQuestions) {
             timeStop();
             $(".container").hide();
             $("div.title").hide();
-            timer.hide();
+            $("p#timer").hide();
             $("#correct").show();
             $("#incorrect").show();
             $("#unanswered").show();
@@ -162,12 +157,13 @@ $(document).ready(function () {
             timer.hide();
             $('.container').hide();
             correctWord.text("Correct!!");
-            $('img#correctGif').fadeIn().delay(3000).fadeOut('slow');
+            $('img#correctGif').fadeIn().delay(2000).fadeOut('slow');
             setTimeout(function () {
                 timeReset();
                 correctWord.hide();
+                timer.show();
                 $('.container').show();
-            }, 4300);
+            }, 3000);
         }
         if (questions[currentQuestion].answer !== answer) {
             incorrect++;
@@ -175,61 +171,60 @@ $(document).ready(function () {
             $('.container').hide();
             timer.hide();
             incorrectWord.text("Thats wrong! The correct answer was : " + questions[currentQuestion].answer);
-            $('img#incorrectGif').fadeIn().delay(3000).fadeOut('slow');
+            $('img#incorrectGif').fadeIn().delay(2000).fadeOut('slow');
             setTimeout(function () {
                 timeReset();
                 incorrectWord.hide();
                 timer.show();
                 $('.container').show();
-            }, 4300);
+            }, 3000);
         }
-        currentQuestion++;
-
+        setTimeout(function () {
+            currentQuestion++;
+            timer.show();
+        }, 3000);
         if (time == 0 && currentQuestion == totQuestions) {
             timeStop();
             $(".container").hide();
             $("div.title").hide();
-            timer.hide();
+            $("p#timer").hide();
             $("#correct").show();
             $("#incorrect").show();
             $("#unanswered").show();
             resultCorrect.text("Correct: " + correct);
             resultIncorrect.text("Incorrect: " + incorrect);
             resultUnanswered.text("Unanswered: " + unanswered);
+            timer.hide();
             return;
         }
-        setTimeout(function () {
-            getQuestion(currentQuestion);
-        }, 4300);
-
-
+        getQuestion(currentQuestion);
     });
     getQuestion(currentQuestion);
     // Scene switching
-    // if (currentQuestion == 0)
-    //     $('body').fadeTo('slow', 0.3, function () {
-    //         $(this).css('background-image', 'url(' + bg0 + ')');
-    //     }).delay(1000).fadeTo('slow', 1);
+    if (currentQuestion == 0)
+        $('body').fadeTo('slow', 0.3, function () {
+            $(this).css('background-image', 'url(' + bg0 + ')');
+        }).delay(1000).fadeTo('slow', 1);
+    
+        if (currentQuestion == 1)
+        $('body').fadeTo('slow', 0.3, function () {
+            $(this).css('background-image', 'url(' + bg1 + ')');
+        }).delay(1000).fadeTo('slow', 1);
 
-    // if (currentQuestion == 1)
-    //     $('body').fadeTo('slow', 0.3, function () {
-    //         $(this).css('background-image', 'url(' + bg1 + ')');
-    //     }).delay(1000).fadeTo('slow', 1);
+    if (currentQuestion == 2)
+        $('body').fadeTo('slow', 0.3, function () {
+            $(this).css('background-image', 'url(' + bg2 + ')');
+        }).delay(1000).fadeTo('slow', 1);
 
-    // if (currentQuestion == 2)
-    //     $('body').fadeTo('slow', 0.3, function () {
-    //         $(this).css('background-image', 'url(' + bg2 + ')');
-    //     }).delay(1000).fadeTo('slow', 1);
+    if (currentQuestion == 3)
+        $('body').fadeTo('slow', 0.3, function () {
+            $(this).css('background-image', 'url(' + bg3 + ')');
+        }).delay(1000).fadeTo('slow', 1);
 
-    // if (currentQuestion == 3)
-    //     $('body').fadeTo('slow', 0.3, function () {
-    //         $(this).css('background-image', 'url(' + bg3 + ')');
-    //     }).delay(1000).fadeTo('slow', 1);
-
-    // if (currentQuestion == 4)
-    //     $('body').fadeTo('slow', 0.3, function () {
-    //         $(this).css('background-image', 'url(' + bg4 + ')');
-    //     }).delay(1000).fadeTo('slow', 1);
+    if (currentQuestion == 4)
+        $('body').fadeTo('slow', 0.3, function () {
+            $(this).css('background-image', 'url(' + bg4 + ')');
+        }).delay(1000).fadeTo('slow', 1);
 
 
     // 
