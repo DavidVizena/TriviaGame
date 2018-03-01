@@ -201,30 +201,30 @@ $(document).ready(function () {
     });
     getQuestion(currentQuestion);
     // Scene switching
-    if (currentQuestion == 0)
-        $('body').fadeTo('slow', 0.3, function () {
-            $(this).css('background-image', 'url(' + bg0 + ')');
-        }).delay(1000).fadeTo('slow', 1);
+    // if (currentQuestion == 0)
+    //     $('body').fadeTo('slow', 0.3, function () {
+    //         $(this).css('background-image', 'url(' + bg0 + ')');
+    //     }).delay(1000).fadeTo('slow', 1);
     
-        if (currentQuestion == 1)
-        $('body').fadeTo('slow', 0.3, function () {
-            $(this).css('background-image', 'url(' + bg1 + ')');
-        }).delay(1000).fadeTo('slow', 1);
+    //     if (currentQuestion == 1)
+    //     $('body').fadeTo('slow', 0.3, function () {
+    //         $(this).css('background-image', 'url(' + bg1 + ')');
+    //     }).delay(1000).fadeTo('slow', 1);
 
-    if (currentQuestion == 2)
-        $('body').fadeTo('slow', 0.3, function () {
-            $(this).css('background-image', 'url(' + bg2 + ')');
-        }).delay(1000).fadeTo('slow', 1);
+    // if (currentQuestion == 2)
+    //     $('body').fadeTo('slow', 0.3, function () {
+    //         $(this).css('background-image', 'url(' + bg2 + ')');
+    //     }).delay(1000).fadeTo('slow', 1);
 
-    if (currentQuestion == 3)
-        $('body').fadeTo('slow', 0.3, function () {
-            $(this).css('background-image', 'url(' + bg3 + ')');
-        }).delay(1000).fadeTo('slow', 1);
+    // if (currentQuestion == 3)
+    //     $('body').fadeTo('slow', 0.3, function () {
+    //         $(this).css('background-image', 'url(' + bg3 + ')');
+    //     }).delay(1000).fadeTo('slow', 1);
 
-    if (currentQuestion == 4)
-        $('body').fadeTo('slow', 0.3, function () {
-            $(this).css('background-image', 'url(' + bg4 + ')');
-        }).delay(1000).fadeTo('slow', 1);
+    // if (currentQuestion == 4)
+    //     $('body').fadeTo('slow', 0.3, function () {
+    //         $(this).css('background-image', 'url(' + bg4 + ')');
+    //     }).delay(1000).fadeTo('slow', 1);
 
 
     // 
