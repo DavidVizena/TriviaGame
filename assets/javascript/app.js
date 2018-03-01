@@ -49,6 +49,8 @@ $(document).ready(function () {
     var opt3 = $("#opt3");
     var opt4 = $("#opt4");
     var timer = $("#timer");
+    var naviSound = new Audio('./assets/sounds/naviHeyListen.mp3');
+
     var correctWord = $("#correctWord");
     var incorrectWord = $("#incorrectWord");
     var unansweredWord = $("#unansweredWord");
@@ -66,6 +68,9 @@ $(document).ready(function () {
         correctWord.hide();
         incorrectWord.hide();
         unansweredWord.hide();
+        setTimeout(function () {
+            naviSound.play();
+        }, 4000);
         $("#naviContainer").show();
         $(".container").hide();
         $("div.title").hide();
