@@ -68,9 +68,6 @@ $(document).ready(function () {
         correctWord.hide();
         incorrectWord.hide();
         unansweredWord.hide();
-        setTimeout(function () {
-            naviSound.play();
-        }, 4000);
         $("#naviContainer").show();
         $(".container").hide();
         $("div.title").hide();
@@ -88,18 +85,21 @@ $(document).ready(function () {
     init();
     // Navi Button
     $("img#navi").on("click", function () {
-        time = 30;
-        $("#naviContainer").hide();
-        $('resultWrapper').hide();
-        $("#correct").hide();
-        $("#incorrect").hide();
-        $("#unanswered").hide();
-        $(".container").show();
-        $("div.title").show();
-        $("p#timer").show();
-        countdown();
-        getQuestion(currentQuestion);
-        getBackground();
+        naviSound.play();
+        setTimeout(function () {
+            time = 30;
+            $("#naviContainer").hide();
+            $('resultWrapper').hide();
+            $("#correct").hide();
+            $("#incorrect").hide();
+            $("#unanswered").hide();
+            $(".container").show();
+            $("div.title").show();
+            $("p#timer").show();
+            countdown();
+            getQuestion(currentQuestion);
+            getBackground();
+        }, 2000);
     });
     // 
     // Deku Button
