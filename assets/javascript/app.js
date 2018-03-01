@@ -37,9 +37,9 @@ $(document).ready(function () {
     var correct = 0;
     var incorrect = 0;
     var unanswered = 0;
+    var totQuestions = questions.length;
     var time = 30;
     var timerSec = setInterval(countdown, 1000);
-    var totQuestions = questions.length;
     // 
     var container = $("#quizContainer");
     var resultWrapper = $("#resultWrapper");
@@ -60,6 +60,9 @@ $(document).ready(function () {
     function init() {
         currentQuestion = 0;
         time = 30;
+        correct = 0;
+        incorrect = 0;
+        unanswered = 0;
         correctWord.hide();
         incorrectWord.hide();
         unansweredWord.hide();
@@ -74,12 +77,18 @@ $(document).ready(function () {
         $("#correctGif").hide();
         $("#incorrectGif").hide();
         $("#unansweredGif").hide();
+        $('h5').hide();
+        $('img#deku').hide();
     };
     init();
-
+    // Navi Button
     $("img#navi").on("click", function () {
         time = 30;
         $("#naviContainer").hide();
+        $('resultWrapper').hide();
+        $("#correct").hide();
+        $("#incorrect").hide();
+        $("#unanswered").hide();
         $(".container").show();
         $("div.title").show();
         $("p#timer").show();
@@ -88,13 +97,24 @@ $(document).ready(function () {
         getBackground();
     });
     // 
+    // Deku Button
+    $('img#deku').on("click", function () {
+        init();
+        $('img#deku').hide();
+        $('.reultWrapper').hide();
+        $('#correct').hide();
+        $('#incorrect').hide();
+        $('#unanswered').hide();
+    });
+    // 
     // Timer  
     function timeReset() {
         time = 30;
         countdown();
     };
     function timeStop() {
-        clearTimeout(timerSec)
+        clearTimeout(timerSec);
+        timerSec = null;
     };
     function countdown() {
         if (time == 0) {
@@ -115,13 +135,14 @@ $(document).ready(function () {
             }, 4200);
         }
         if (currentQuestion == totQuestions) {
-            timeStop();
             $(".container").hide();
             $("div.title").hide();
             $("p#timer").hide();
             $("#correct").show();
             $("#incorrect").show();
             $("#unanswered").show();
+            $('h5').show();
+            $('img#deku').show();
             resultCorrect.text("Correct: " + correct);
             resultIncorrect.text("Incorrect: " + incorrect);
             resultUnanswered.text("Unanswered: " + unanswered);
@@ -133,7 +154,6 @@ $(document).ready(function () {
         }
         getQuestion(currentQuestion);
     };
-    countdown();
     // END Timer
     // 
     // Gets a question and populates the HTML
@@ -183,13 +203,14 @@ $(document).ready(function () {
             timer.show();
         }, 4200);
         if (time == 0 && currentQuestion == totQuestions) {
-            timeStop();
             $(".container").hide();
             $("div.title").hide();
             $("p#timer").hide();
             $("#correct").show();
             $("#incorrect").show();
             $("#unanswered").show();
+            $('h5').show();
+            $('img#deku').show();
             resultCorrect.text("Correct: " + correct);
             resultIncorrect.text("Incorrect: " + incorrect);
             resultUnanswered.text("Unanswered: " + unanswered);

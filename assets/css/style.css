@@ -17,6 +17,9 @@ body{
     color: #f2e918;
     font-family: "Triforce"
 }
+#audio{
+    opacity: .25;
+}
 .container result{
     display: none;
 }
@@ -127,8 +130,19 @@ div.resultWrapper{
     opacity: .75;
     font-size: 100px;
     position: absolute;
-    top: 28%;
-    left: 35%;
+    top: 30%;
+    left: 55%;
+}
+img#deku{
+    position: absolute;
+    left: 15%;
+    top: 20%;
+}
+h5{
+    font-size: 50px;
+    position: absolute;
+    top: 80%;
+    left: 12%;
 }
 img#correctGif{
 position: absolute;
