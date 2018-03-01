@@ -49,11 +49,6 @@ $(document).ready(function () {
     var opt3 = $("#opt3");
     var opt4 = $("#opt4");
     var timer = $("#timer");
-    var bg0 = "./assets/images/blueBG.jpg"
-    var bg1 = "./assets/images/majMaskBG.jpg"
-    var bg2 = "./assets/images/ocarinaOfTimeBG.jpg"
-    var bg3 = "./assets/images/twilightPrincess.jpg"
-    var bg4 = "./assets/images/windWaker.jpg"
     var correctWord = $("#correctWord");
     var incorrectWord = $("#incorrectWord");
     var unansweredWord = $("#unansweredWord");
@@ -89,6 +84,8 @@ $(document).ready(function () {
         $("div.title").show();
         $("p#timer").show();
         countdown();
+        getQuestion(currentQuestion);
+        getBackground();
     });
     // 
     // Timer  
@@ -107,14 +104,15 @@ $(document).ready(function () {
             $('.container').hide();
             unansweredWord.show();
             unansweredWord.text("You fell asleep! The correct answer was : " + questions[currentQuestion].answer);
-            $('img#unansweredGif').fadeIn().delay(2000).fadeOut('slow');
+            $('img#unansweredGif').fadeIn().delay(3000).fadeOut('slow');
             setTimeout(function () {
                 currentQuestion++;
+                getBackground()
                 unansweredWord.hide();
                 timeReset();
                 timer.show();
                 $('.container').show();
-            }, 2200);
+            }, 4200);
         }
         if (currentQuestion == totQuestions) {
             timeStop();
@@ -157,13 +155,13 @@ $(document).ready(function () {
             timer.hide();
             $('.container').hide();
             correctWord.text("Correct!!");
-            $('img#correctGif').fadeIn().delay(2000).fadeOut('slow');
+            $('img#correctGif').fadeIn().delay(3000).fadeOut('slow');
             setTimeout(function () {
                 timeReset();
                 correctWord.hide();
                 timer.show();
                 $('.container').show();
-            }, 3000);
+            }, 4200);
         }
         if (questions[currentQuestion].answer !== answer) {
             incorrect++;
@@ -171,18 +169,19 @@ $(document).ready(function () {
             $('.container').hide();
             timer.hide();
             incorrectWord.text("Thats wrong! The correct answer was : " + questions[currentQuestion].answer);
-            $('img#incorrectGif').fadeIn().delay(2000).fadeOut('slow');
+            $('img#incorrectGif').fadeIn().delay(3000).fadeOut('slow');
             setTimeout(function () {
                 timeReset();
                 incorrectWord.hide();
                 timer.show();
                 $('.container').show();
-            }, 3000);
+            }, 4200);
         }
         setTimeout(function () {
             currentQuestion++;
+            getBackground()
             timer.show();
-        }, 3000);
+        }, 4200);
         if (time == 0 && currentQuestion == totQuestions) {
             timeStop();
             $(".container").hide();
@@ -199,34 +198,33 @@ $(document).ready(function () {
         }
         getQuestion(currentQuestion);
     });
-    getQuestion(currentQuestion);
     // Scene switching
-    // if (currentQuestion == 0)
-    //     $('body').fadeTo('slow', 0.3, function () {
-    //         $(this).css('background-image', 'url(' + bg0 + ')');
-    //     }).delay(1000).fadeTo('slow', 1);
-    
-    //     if (currentQuestion == 1)
-    //     $('body').fadeTo('slow', 0.3, function () {
-    //         $(this).css('background-image', 'url(' + bg1 + ')');
-    //     }).delay(1000).fadeTo('slow', 1);
+    function getBackground() {
+        if (currentQuestion == 0)
+            $('body').fadeTo('slow', 0.3, function () {
+                $('body').css('background-image', 'url(' + "./assets/images/majMaskBG.jpg" + ')');
+            }).delay(1000).fadeTo('slow', 1);
 
-    // if (currentQuestion == 2)
-    //     $('body').fadeTo('slow', 0.3, function () {
-    //         $(this).css('background-image', 'url(' + bg2 + ')');
-    //     }).delay(1000).fadeTo('slow', 1);
+        if (currentQuestion == 1)
+            $('body').fadeTo('slow', 0.3, function () {
+                $('body').css('background-image', 'url(' + "./assets/images/ocarinaOfTimeBG.jpg" + ')');
+            }).delay(1000).fadeTo('slow', 1);
 
-    // if (currentQuestion == 3)
-    //     $('body').fadeTo('slow', 0.3, function () {
-    //         $(this).css('background-image', 'url(' + bg3 + ')');
-    //     }).delay(1000).fadeTo('slow', 1);
+        if (currentQuestion == 2)
+            $('body').fadeTo('slow', 0.3, function () {
+                $('body').css('background-image', 'url(' + "./assets/images/twilightPrincessBG.jpg" + ')');
+            }).delay(1000).fadeTo('slow', 1);
 
-    // if (currentQuestion == 4)
-    //     $('body').fadeTo('slow', 0.3, function () {
-    //         $(this).css('background-image', 'url(' + bg4 + ')');
-    //     }).delay(1000).fadeTo('slow', 1);
-
-
+        if (currentQuestion == 3)
+            $('body').fadeTo('slow', 0.3, function () {
+                $('body').css('background-image', 'url(' + "./assets/images/windWalkerBG.jpg" + ')');
+            }).delay(1000).fadeTo('slow', 1);
+        if (currentQuestion === totQuestions) {
+            $('body').fadeTo('slow', 0.3, function () {
+                $('body').css('background-image', 'url(' + "./assets/images/blueBG.jpg" + ')');
+            }).delay(1000).fadeTo('slow', 1);
+        }
+    };
     // 
     // Document Ready Closing Function
 });
