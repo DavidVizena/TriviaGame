@@ -39,7 +39,7 @@ $(document).ready(function () {
     var unanswered = 0;
     var totQuestions = questions.length;
     var time = 30;
-    var timerSec = setInterval(countdown, 1000);
+    var timerSec;
     // 
     var container = $("#quizContainer");
     var resultWrapper = $("#resultWrapper");
@@ -85,6 +85,8 @@ $(document).ready(function () {
     init();
     // Navi Button
     $("img#navi").on("click", function () {
+        timeStop();
+        timerSec = setInterval(countdown, 1000);
         naviSound.play();
         setTimeout(function () {
             time = 30;
@@ -99,6 +101,9 @@ $(document).ready(function () {
             countdown();
             getQuestion(currentQuestion);
             getBackground();
+        }, 6000);
+        setTimeout(function () {
+            $(this).prop('disabled', false);
         }, 2000);
     });
     // 
