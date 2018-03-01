@@ -96,13 +96,13 @@ span#correctWord{
 font-size: 50px;
 position: absolute;
 top: 34%;
-left: 43%;
+left: 45%;
 }
 span#incorrectWord{
     font-size: 50px;
     position: absolute;
     top: 32%;
-    left: 26%;
+    left: 25%;
 }
 span#unansweredWord{
     font-size: 50px;
