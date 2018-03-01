@@ -101,7 +101,7 @@ $(document).ready(function () {
             countdown();
             getQuestion(currentQuestion);
             getBackground();
-        }, 6000);
+        }, 2000);
         setTimeout(function () {
             $(this).prop('disabled', false);
         }, 2000);
